@@ -18,11 +18,14 @@ include_directories ("${PROJECT_SOURCE_DIR}/lexer_generator/")
 include_directories ("${PROJECT_SOURCE_DIR}/parser_generator/")
 include_directories ("${PROJECT_SOURCE_DIR}/subcc/")
 
+add_executable (LexerGeneratorMain lexer_generator/lexer_generator_main)
 add_library (LexerGeneratorTest lexer_generator/lexer_generator_test)
+target_link_libraries (LexerGeneratorMain  LexerGeneratorTest)
 
-add_executable (LexerGenerator lexer_generator/lexer_generator_main)
+add_executable (ParserGeneratorMain parser_generator/parser_generator_main)
+add_library (ParserGeneratorTest parser_generator/parser_generator_test)
+add_library (ParserGenerator parser_generator/parser_generator)
 
-target_link_libraries (LexerGenerator  LexerGeneratorTest)
-
+target_link_libraries (ParserGeneratorMain ParserGeneratorTest ParserGenerator)
 
 add_definitions(-Wfatal-errors)

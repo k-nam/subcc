@@ -2,11 +2,11 @@
 //
 
 
-#include "parser_test.h"
+#include "parser_generator_test.h"
 
 int main(int argc, char* argv[])
 {
-	lib_calvin_parser::parserTest();
+	subcc::parserTest();
 	return 0;
 }
 

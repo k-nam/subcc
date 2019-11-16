@@ -1,7 +1,8 @@
-#include "parser_test.h"
+#include "parser_generator_test.h"
 
-void lib_calvin_parser::parserTest() {
-	std::cout << "------------- Beginning parser test --------------\n\n";
+void subcc::parserTest()
+{
+  std::cout << "------------- Beginning parser test --------------\n\n";
   ContextFreeLanguage lang(250, 500);
   ContextFreeLanguage lang2(250, 500);
   ContextFreeLanguage lang3(250, 500);
@@ -20,8 +21,8 @@ void lib_calvin_parser::parserTest() {
   lang.add(6, ExpTokens_FACTOR, ExpTokens_ID, kEndMarker);
   // 6: F -> ( E )
   lang.add(7, ExpTokens_FACTOR, ExpTokens_OPENPAREN, ExpTokens_EXPR, expTokens_CLOSEPAREN, kEndMarker);
-   
-  // 0. S -> L = R 
+
+  // 0. S -> L = R
   lang2.add(1, ValueTokens_S, ValueTokens_L, ValueTokens_EQUAL, ValueTokens_R, kEndMarker);
   // 1. S -> R
   lang2.add(2, ValueTokens_S, ValueTokens_R, kEndMarker);
@@ -38,8 +39,8 @@ void lib_calvin_parser::parserTest() {
 
   lang.finalize();
   lang2.finalize();
-  lang3.finalize();   
-	cout << "\n";
+  lang3.finalize();
+  cout << "\n";
 
   SlrParserGenerator slr_parser(lang);
   slr_parser.build();
@@ -49,25 +50,25 @@ void lib_calvin_parser::parserTest() {
   lalr_parser.build();
   LalrParserGenerator lalr_parser2(lang);
   lalr_parser2.buildFast();
-	cout << "\n";
+  cout << "\n";
 
-  slr_parser.parse(ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID, ExpTokens_PLUS, 
-		ExpTokens_OPENPAREN, ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID, 
-		ExpTokens_PLUS, ExpTokens_ID, expTokens_CLOSEPAREN, ExpTokens_MULTI, 
-		ExpTokens_ID, kEndMarker);
-  lr1_parser.parse(ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID, ExpTokens_PLUS, 
-		ExpTokens_OPENPAREN, ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID, 
-		ExpTokens_PLUS, ExpTokens_ID, expTokens_CLOSEPAREN, ExpTokens_MULTI, 
-		ExpTokens_ID, kEndMarker);
-  lalr_parser.parse(ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID, ExpTokens_PLUS, 
-		ExpTokens_OPENPAREN, ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID, 
-		ExpTokens_PLUS, ExpTokens_ID, expTokens_CLOSEPAREN, ExpTokens_MULTI, 
-		ExpTokens_ID, kEndMarker);
-  lalr_parser2.parse(ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID, ExpTokens_PLUS, 
-		ExpTokens_OPENPAREN, ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID, 
-		ExpTokens_PLUS, ExpTokens_ID, expTokens_CLOSEPAREN, ExpTokens_MULTI, 
-		ExpTokens_ID, kEndMarker);
-	/*
+  slr_parser.parse(ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID, ExpTokens_PLUS,
+                   ExpTokens_OPENPAREN, ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID,
+                   ExpTokens_PLUS, ExpTokens_ID, expTokens_CLOSEPAREN, ExpTokens_MULTI,
+                   ExpTokens_ID, kEndMarker);
+  lr1_parser.parse(ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID, ExpTokens_PLUS,
+                   ExpTokens_OPENPAREN, ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID,
+                   ExpTokens_PLUS, ExpTokens_ID, expTokens_CLOSEPAREN, ExpTokens_MULTI,
+                   ExpTokens_ID, kEndMarker);
+  lalr_parser.parse(ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID, ExpTokens_PLUS,
+                    ExpTokens_OPENPAREN, ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID,
+                    ExpTokens_PLUS, ExpTokens_ID, expTokens_CLOSEPAREN, ExpTokens_MULTI,
+                    ExpTokens_ID, kEndMarker);
+  lalr_parser2.parse(ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID, ExpTokens_PLUS,
+                     ExpTokens_OPENPAREN, ExpTokens_ID, ExpTokens_MULTI, ExpTokens_ID,
+                     ExpTokens_PLUS, ExpTokens_ID, expTokens_CLOSEPAREN, ExpTokens_MULTI,
+                     ExpTokens_ID, kEndMarker);
+  /*
   lr1_parser.parse(ValueTokens_STAR, ValueTokens_STAR, ValueTokens_STAR, 
 		ValueTokens_ID, ValueTokens_EQUAL, ValueTokens_STAR, ValueTokens_STAR, 
 		ValueTokens_ID, kEndMarker);
@@ -78,5 +79,5 @@ void lib_calvin_parser::parserTest() {
 		ValueTokens_ID, ValueTokens_EQUAL, ValueTokens_STAR, ValueTokens_STAR, 
 		ValueTokens_ID, kEndMarker);
 		*/
-	std::cout << "------------- Parser test finished --------------\n\n\n";
+  std::cout << "------------- Parser test finished --------------\n\n\n";
 }

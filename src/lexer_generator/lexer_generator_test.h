@@ -1,5 +1,5 @@
-#ifndef LIB_CALVIN__LEXER__LEXER_TEST_H
-#define LIB_CALVIN__LEXER__LEXER_TEST_H
+#ifndef SUBCC__LEXER_GENERATOR_TEST_H
+#define SUBCC__LEXER_GENERATOR_TEST_H
 
 #include "lexer_generator.h"
 #include "fcntl.h" // for open, read

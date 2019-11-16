@@ -60,12 +60,12 @@ private:
     
   c_string getTempName(); // return "t1", "t2", ...
 
-  void makeLanguage(lib_calvin_parser::ContextFreeLanguage &);
-  void makeParser(lib_calvin_parser::LalrParserGenerator &);
+  void makeLanguage(subcc::ContextFreeLanguage &);
+  void makeParser(subcc::LalrParserGenerator &);
     
   Lexer lexer_;
-  lib_calvin_parser::ContextFreeLanguage subcc_;
-  lib_calvin_parser::LalrParserGenerator subccParser_;
+  subcc::ContextFreeLanguage subcc_;
+  subcc::LalrParserGenerator subccParser_;
     
   shared_ptr<GlobalSymbolTable> symbolTable_; // takes care of range of scopes itself
   vector<SyntaxTreeNode *> stack_; // stack for building syntax tree

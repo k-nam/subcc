@@ -12,7 +12,7 @@ using lib_calvin::c_string;
 using std::cout;
 using std::endl;
 using std::dynamic_pointer_cast;
-using namespace lib_calvin_parser;
+using namespace subcc;
 
 typedef SlrParserGenerator::Production Production;
 

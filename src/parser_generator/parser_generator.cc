@@ -1,12 +1,8 @@
 #include <iostream>
 #include <cstdarg> // for variable argument number
-#include "parser.h"
-#include "stopwatch.h"
+#include "parser_generator.h"
 
-
-
-
-namespace lib_calvin_parser {
+namespace subcc {
 using std::pair;
 using std::cout;
 using std::endl;
@@ -507,7 +503,7 @@ void SlrParserGenerator::build (bool doReduce) {
 
 // Revised to take precedence into account; eliminate conflicts
 void SlrParserGenerator::checkConflict() {
-  using namespace lib_calvin_parser;
+  using namespace subcc;
   // Need only to check action table (goto table has no conflict)
   for (unsigned i = 0; i < actionTable_.size(); ++i) { // for all States
     for (int j = 0; j < language_.terminalEnd_; j++) { // for all terminals
