@@ -1,2 +1,2 @@
-# subcc
-Compiler for subc (subset of C = simple version of C)
+# subcc (subc compiler)
+Compiler for subc (subc = subset of C = simple version of C)
