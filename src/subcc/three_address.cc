@@ -60,11 +60,11 @@ namespace subcc
 
 	/*** FunctionStartInstrucion ***/
 
-	FunctionStartInstruction::FunctionStartInstruction(c_string const &functionName, int stackSize) :
+	FunctionStartInstruction::FunctionStartInstruction(string const &functionName, int stackSize) :
 		Instruction(Instruction_Function_Start), functionName_(functionName),
 		stackSize_(stackSize) { }
 
-	subcc::c_string const &
+	subcc::string const &
 		FunctionStartInstruction::getFunctionName() const { return functionName_; }
 
 	int FunctionStartInstruction::getStackSize() const { return stackSize_; }
@@ -72,11 +72,11 @@ namespace subcc
 	/*** FunctionEndInstrucion ***/
 
 	FunctionEndInstruction::FunctionEndInstruction(
-		c_string const &functionName, int stackSize) :
+		string const &functionName, int stackSize) :
 		Instruction(Instruction_Function_End), functionName_(functionName),
 		stackSize_(stackSize) { }
 
-	subcc::c_string const &
+	subcc::string const &
 		FunctionEndInstruction::getFunctionName() const { return functionName_; }
 
 	int FunctionEndInstruction::getStackSize() const { return stackSize_; }
@@ -433,7 +433,7 @@ namespace subcc
 			return;
 		}
 		int index = address.getSymbolTableIndex();
-		c_string const &lexeme = symbolTable_->lookUp(index)->getLexeme();
+		string const &lexeme = symbolTable_->lookUp(index)->getLexeme();
 		cout << lexeme;
 	}
 
@@ -926,7 +926,7 @@ namespace subcc
 			LvalueNode *lvalueNode = dynamic_cast<LvalueNode *> (node->getChild(0));
 			IdNode *idNode = dynamic_cast<IdNode *> (node->getChild(1));
 			// Get offset of the field named ID
-			c_string const &field = idNode->getLexeme();
+			string const &field = idNode->getLexeme();
 			int fieldIndex = dynamic_pointer_cast<RecordType const>(
 				lvalueNode->getType())->getIndexOf(field);
 			int recordOffset = symbolTable_->lookUp(fieldIndex)->getOffset();

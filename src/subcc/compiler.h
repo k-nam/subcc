@@ -1,12 +1,12 @@
 #ifndef LIB_CALVIN__SUBCC__COMPILER
 #define LIB_CALVIN__SUBCC__COMPILER
 
-#include "basic_string.h"
+#include <string>
 
 namespace subcc 
 {
 	// Compiler and send output to stdout
-	void compile(lib_calvin::c_string sourceCode, std::ostream &file);
+	void compile(std::string sourceCode, std::ostream &file);
 }
 
 #endif

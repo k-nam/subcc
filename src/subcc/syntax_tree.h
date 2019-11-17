@@ -1,7 +1,7 @@
 #ifndef LIB_CALVIN__SUBCC__SYNTAX_TREE_H
 #define LIB_CALVIN__SUBCC__SYNTAX_TREE_H
 
-#include "lexer.h" // for c_string
+#include "lexer_generator.h" // for string
 #include "type.h"
 #include "symbol_table.h"
 
@@ -71,14 +71,14 @@ protected:
 // Stores the line number it appeard for error reporting with this ID
 class IdNode: public SyntaxTreeNode {
 public:
-  IdNode(c_string const &lexeme, int lineNum): 
+  IdNode(string const &lexeme, int lineNum): 
     lexeme_(lexeme), lineNum_(lineNum) { }
-  c_string const &getLexeme() const { return lexeme_; }
+  string const &getLexeme() const { return lexeme_; }
   void setSymbolTableIndex(int index) { symbolTableIndex_ = index; }
   int getSymbolTableIndex() const { return symbolTableIndex_; }
   int getLineNum() const { return lineNum_; }
 protected:
-  c_string lexeme_; 
+  string lexeme_; 
   int symbolTableIndex_; // pointer to symbol table
   int lineNum_; // line number of source code the ID is in
 };

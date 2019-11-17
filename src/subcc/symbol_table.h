@@ -1,8 +1,8 @@
 #ifndef LIB_CALVIN__SUBCC__SYMBOL_TABLE_H
 #define LIB_CALVIN__SUBCC__SYMBOL_TABLE_H
 
-#include "basic_string.h"
-#include "lexer.h" // to use my own c_string implementation
+#include <string>
+#include "lexer_generator.h" // to use my own string implementation
 #include "type.h"
 #include <iostream>
 #include <stdio.h>
@@ -15,7 +15,6 @@ using std::shared_ptr;
 namespace subcc {
 	extern int symtabCount;
 	extern int symbolCount;
-	using lib_calvin::c_string;
 	int const SYMBOL_VAR_MAX = 10; // below this are variables
 	int const SYMBOL_TEMP_MAX = 20; // belw this are temporaries
 	int const SYMBOL_CONST_MAX = 40; // below this are constants
@@ -43,9 +42,9 @@ namespace subcc {
 
 	class Symbol {
 	public:
-		Symbol(enum SymbolKinds symbolKind, c_string const &lexeme, shared_ptr<Type const> type);
+		Symbol(enum SymbolKinds symbolKind, string const &lexeme, shared_ptr<Type const> type);
 		virtual ~Symbol();
-		c_string const &getLexeme() const { return lexeme_; }
+		string const &getLexeme() const { return lexeme_; }
 		shared_ptr<Type const> getType() const { return type_; }
 		enum SymbolKinds getSymbolKind() const { return symbolKind_; }
 		// Returns whether the symbol occupies space on stack or not
@@ -61,7 +60,7 @@ namespace subcc {
 		static void countObjects();
 	protected:
 		enum SymbolKinds symbolKind_;
-		c_string lexeme_; // also becomes constant value for c_string constants
+		string lexeme_; // also becomes constant value for string constants
 	private:
 		// type of the object the symbol refers 
 		shared_ptr<Type const> type_;  
@@ -76,7 +75,7 @@ namespace subcc {
 		Constant(char charValue);
 		Constant(short shortValue);
 		Constant(int intValue);
-		Constant(c_string const &lexeme); // c_string constant
+		Constant(string const &lexeme); // string constant
 		~Constant();
 		char getCharValue() const { return constant_.charValue_; }
 		short getShortValue() const { return constant_.shortValue_; }
@@ -92,7 +91,7 @@ namespace subcc {
 
 	class Temporary : public Symbol {
 	public:
-		Temporary(c_string const &lexeme, shared_ptr<Type const> type) :
+		Temporary(string const &lexeme, shared_ptr<Type const> type) :
 			Symbol(SYMBOL_TEMPORARY, lexeme, type) { }
 		~Temporary();
 		//virtual void print() { std::cout << "temmp symbol\n"; }
@@ -114,9 +113,9 @@ namespace subcc {
 		SymbolTable(GlobalSymbolTable const &globalTable);
 		~SymbolTable();
 		// Returns index if declared, -1 if not
-		int findIndex(c_string const &) const;
+		int findIndex(string const &) const;
 		// Look only into this symbol table(not ancestors)
-		shared_ptr<Type const> getTypeOf(c_string const &field) const;
+		shared_ptr<Type const> getTypeOf(string const &field) const;
 		// Assuming this symbol has not been declared
 		void insert(shared_ptr<Symbol>, int index);
 		int getOffset() const { return offset_; }
@@ -133,7 +132,7 @@ namespace subcc {
 		static void countObjects();
 	private:
 		// Integer value is the index to the global table
-		map<c_string, int> mapping_;
+		map<string, int> mapping_;
 		GlobalSymbolTable const &globalTable_;
 		SymbolTable *parent_;
 		vector<SymbolTable const *> children_;
@@ -150,14 +149,14 @@ namespace subcc {
 	public:
 		GlobalSymbolTable();
 		~GlobalSymbolTable();
-		int saveStringLiteral(c_string); // returns starting offset of input string
-		c_string getStringSegment() const { return stringSegment_; }
+		int saveStringLiteral(string); // returns starting offset of input string
+		string getStringSegment() const { return stringSegment_; }
 		void pushTable(); // entering into nested scope: '{': DO NOT use for env
 		void pushEnvironment(); // entering into a record declaration
 		void pushFunction(); // entering into a function definition(before params)
 		bool popTable(); // escape from nested scope: '}'						 
 		bool isInGlobal() { return root_ == curTable_; } // Find out whether we are in global scope or not
-		int findIndex(c_string const &lexeme) const; // returns negative when faulty
+		int findIndex(string const &lexeme) const; // returns negative when faulty
 		shared_ptr<Symbol const> lookUp(int index) const;
 		// Prepared for record type declarations: returns finished symbol table
 		SymbolTable const &getEnvironment();
@@ -184,7 +183,7 @@ namespace subcc {
 		SymbolTable *curTable_; // currently operating table								
 		vector<shared_ptr<Symbol const>> array_;
 		int maxStackSize_; // maximum stack size of the current function definition
-		c_string stringSegment_; // storing all string literals
+		string stringSegment_; // storing all string literals
 	private:
 		static int objectCount_;
 	};

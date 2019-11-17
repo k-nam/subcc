@@ -1,13 +1,13 @@
 /* SymbolTable.cc */
 #include "symbol_table.h"
 #include "type.h"
-
+#include "utility.h"
 namespace subcc
 {
 
 	/************************** Symbol methods ******************************/
 
-	Symbol::Symbol(enum SymbolKinds symbolKind, c_string const &lexeme,
+	Symbol::Symbol(enum SymbolKinds symbolKind, string const &lexeme,
 		shared_ptr<Type const> type) :
 		symbolKind_(symbolKind), lexeme_(lexeme), type_(type) {
 		++objectCount_;
@@ -55,26 +55,26 @@ namespace subcc
 	/********************* Constant methods **************************/
 
 	Constant::Constant(char charValue) :
-		Symbol(SYMBOL_CONSTANT_CHAR, c_string(lib_calvin::itoa(charValue)),
+		Symbol(SYMBOL_CONSTANT_CHAR, string(stringOfInt(charValue)),
 			getBaseType(BASETYPE_CHAR)) {
 		constant_.charValue_ = charValue;
 	}
 
 	Constant::Constant(short shortValue) :
-		Symbol(SYMBOL_CONSTANT_SHORT, c_string(lib_calvin::itoa(shortValue)),
+		Symbol(SYMBOL_CONSTANT_SHORT, string(stringOfInt(shortValue)),
 			getBaseType(BASETYPE_SHORT)) {
 		constant_.shortValue_ = shortValue;
 
 	}
 
 	Constant::Constant(int intValue) :
-		Symbol(SYMBOL_CONSTANT_INT, c_string(lib_calvin::itoa(intValue)),
+		Symbol(SYMBOL_CONSTANT_INT, string(stringOfInt(intValue)),
 			getBaseType(BASETYPE_INT)) {
 		constant_.intValue_ = intValue;
 
 	}
 
-	Constant::Constant(c_string const &lexeme) :
+	Constant::Constant(string const &lexeme) :
 		Symbol(SYMBOL_CONSTANT_STRING, lexeme,
 			shared_ptr<ArrayType const>(new ArrayType(
 				static_cast<int>(lexeme.length()) - 2, getBaseType(BASETYPE_CHAR)))) {
@@ -116,8 +116,8 @@ namespace subcc
 		}
 	}
 
-	int SymbolTable::findIndex(c_string const &lexeme) const {
-		map<c_string, int>::const_iterator iter = mapping_.find(lexeme);
+	int SymbolTable::findIndex(string const &lexeme) const {
+		map<string, int>::const_iterator iter = mapping_.find(lexeme);
 		if (iter == mapping_.end())
 			return -1;
 		else { // matching
@@ -126,7 +126,7 @@ namespace subcc
 	}
 
 	shared_ptr<Type const>
-		SymbolTable::getTypeOf(c_string const &lexeme) const {
+		SymbolTable::getTypeOf(string const &lexeme) const {
 		int index = findIndex(lexeme);
 		if (index < 0)
 			return shared_ptr<Type const>(new ErrorType());
@@ -201,7 +201,7 @@ namespace subcc
 		}*/
 	}
 
-	int GlobalSymbolTable::saveStringLiteral(c_string stringLiteral) {
+	int GlobalSymbolTable::saveStringLiteral(string stringLiteral) {
 		int offset = static_cast<int>(stringSegment_.length());
 		stringSegment_ += stringLiteral;
 		return offset;
@@ -230,7 +230,7 @@ namespace subcc
 			return false;
 	}
 
-	int GlobalSymbolTable::findIndex(c_string const &lexeme) const {
+	int GlobalSymbolTable::findIndex(string const &lexeme) const {
 		SymbolTable *tempTable = curTable_;
 		while (true) {
 			int index = tempTable->findIndex(lexeme);

@@ -8,6 +8,8 @@ void lexerTest()
 {
 	std::cout << "------------- Beginning lexer test ---------------\n\n";
 	lexerTest("int main(int argc, char *argv[]){\n return 1;} ");
+	lexerTest("void printStr( char s[80] ); \n void printInt ( int a ); \n\
+      void printNewLine(); \n");
 	std::cout << "------------- Lexer test finished ---------------\n\n\n";
 }
 
@@ -187,7 +189,7 @@ void lexerTest(std::string const &inputText)
 	cout << "Output:\n";
 	while (index < static_cast<int>(sourceFile.size()))
 	{
-		nfa.getMatch(sourceFile, index, myToken); // get next Token
+		dfa.getMatch(sourceFile, index, myToken); // get next Token
 												  //if (myToken.key == 15)
 												  //cout << "comment\t";
 		if (myToken.key == -1)

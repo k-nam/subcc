@@ -109,7 +109,7 @@ public:
 	~NfaLexerGenerator();
 	void clear(); // clear all
 				  // Push a regular expression into this machine (not convert yet)
-				  // Ultimately, this function has to take just c_string argument and
+				  // Ultimately, this function has to take just string argument and
 				  // ..parse that by itself.
 	void addRegularExpression(int key, std::shared_ptr<ParseTree const> regex);
 	void buildAll(); // convert REs to one Nfa
@@ -119,7 +119,7 @@ public:
 						   set<State> &nextStates) const;
 	void getMove(set<State> const &curStates, CharType input,
 				 set<State> &nextStates) const;
-	// Match input c_string, and return corresponding Sentence
+	// Match input string, and return corresponding Sentence
 	void getMatch(basic_string<Alphabet> const &, int index, Token &) const;
 	int getMatch(set<State> const &) const;
 
@@ -151,7 +151,7 @@ private:
 
 	int const charSize_;
 	int size_;			 // num of total states
-	State initialState_; // ultimate start state for c_string matching
+	State initialState_; // ultimate start state for string matching
 						 // Maps each Nfa to its final state
 						 // Also plays the role of keeping the list of current NFAs.
 	map<Nfa, State> nfaToFinalState_;

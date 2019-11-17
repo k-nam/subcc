@@ -13,8 +13,9 @@ void subcc::subccTest() {
 	using std::cout;
 	std::cout << "---------------- Beginning subcc test -----------------\n\n";
 	// Adding "../subcc/" to make this path compatible with other projects
-	std::string inputFileName = "../subcc/subc_code/a2.c";
-	//char *inputFileName = "../subcc/subc_code/test.c";
+	//std::string inputFileName = "../subcc/subc_code/a1.c";
+	//std::string inputFileName = "../subcc/subc_code/a2.c";
+	std::string inputFileName = "../subcc/subc_code/test.c";
 
 	string sourceText;
 
