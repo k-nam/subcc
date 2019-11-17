@@ -37,11 +37,11 @@ void subcc::subccTest() {
 	cout << "\n";
 
 	/* Uncomment below line to save output to a file (which can be run in subcc_run project) */
-	//std::ofstream file("../subcc/output/assembly.cc");
+	std::ofstream outFile("../subcc/output/assembly.cc");
 	std::ostream &file = std::cout;
 
 	//while(true) { // loop to check memory leak
-	compile(inputToCompiler, file);
+	compile(inputToCompiler, outFile);
 	//}
 
 	SymbolTable::countObjects();

@@ -12,9 +12,9 @@ namespace subcc
 	void CCodeGenerator::printCCode() const {
 		// For other declarations
 		cout << "#include <stdio.h> \n";
-		cout << "#include \"subcc_interpreter.h\"\n\n";
-		cout << "namespace subcc_interpreter\n{\n";
-		// Data segment (Stack segment is declared in subcc_interpreter.h)
+		cout << "#include \"interpreter.h\"\n\n";
+		cout << "namespace subcc\n{\n";
+		// Data segment (Stack segment is declared in interpreter.h)
 		cout << "char DATA[1024];\n";
 		cout << "char STRING_SEGMENT[1024] =\"" << symbolTable_->getStringSegment() << "\";\n";
 		// General registers

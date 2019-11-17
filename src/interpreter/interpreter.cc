@@ -2,9 +2,9 @@
 #include "interpreter.h"
 
 /* stack 8KB */
- char subcc_interpreter::STACK[ 8096];
- int  subcc_interpreter::SP = 0;
- int  subcc_interpreter::FP = 0;
+char subcc::STACK[8096];
+int subcc::SP = 0;
+int subcc::FP = 0;
 
 /* stack structure for a function call */
 /*
@@ -17,7 +17,7 @@
  *   +------------------------+ <-- SP
  */
 
-void subcc_interpreter::printInt()
+void subcc::printInt()
 {
 	// --------------------------------------------------------------------
 	// declarations of formal parameters
@@ -29,30 +29,30 @@ void subcc_interpreter::printInt()
 	// --------------------------------------------------------------------
 	// prolog begin
 	// save machine status
-	STORE( FP, STACK, SP - 4, 4 );
+	STORE(FP, STACK, SP - 4, 4);
 	FP = SP;
 	SP = SP - 4;
 	// retrieve formal parameters
-	LOAD( a, STACK, FP, 4 );
+	LOAD(a, STACK, FP, 4);
 	// set initial values of symbolic variables.
 	// prolog end
 	// --------------------------------------------------------------------
 
 	// --------------------------------------------------------------------
 	// native function call.
-	printf( "%d", a );
+	printf("%d", a);
 	// --------------------------------------------------------------------
 
 	// --------------------------------------------------------------------
 	// epilog begin
 	SP = FP;
-	LOAD( FP, STACK, FP - 4, 4 );
+	LOAD(FP, STACK, FP - 4, 4);
 	RETURN;
-	// epilog end 
+	// epilog end
 	// --------------------------------------------------------------------
 }
 
-void subcc_interpreter::printStr()
+void subcc::printStr()
 {
 	// --------------------------------------------------------------------
 	// declarations of formal parameters
@@ -64,30 +64,30 @@ void subcc_interpreter::printStr()
 	// --------------------------------------------------------------------
 	// prolog begin
 	// save machine status
-	STORE( FP, STACK, SP - 4, 4 );
+	STORE(FP, STACK, SP - 4, 4);
 	FP = SP;
 	SP = SP - 4;
 	// retrieve formal parameters
-	LOAD( s, STACK, FP, 80 );
+	LOAD(s, STACK, FP, 80);
 	// set initial values of symbolic variables.
 	// prolog end
 	// --------------------------------------------------------------------
 
 	// --------------------------------------------------------------------
 	// native function call.
-	printf( "%s", s );
+	printf("%s", s);
 	// --------------------------------------------------------------------
 
 	// --------------------------------------------------------------------
 	// epilog begin
 	SP = FP;
-	LOAD( FP, STACK, FP - 4, 4 );
+	LOAD(FP, STACK, FP - 4, 4);
 	RETURN;
-	// epilog end 
+	// epilog end
 	// --------------------------------------------------------------------
 }
 
-void subcc_interpreter::printNewLine()
+void subcc::printNewLine()
 {
 	// --------------------------------------------------------------------
 	// declarations of formal parameters
@@ -98,7 +98,7 @@ void subcc_interpreter::printNewLine()
 	// --------------------------------------------------------------------
 	// prolog begin
 	// save machine status
-	STORE( FP, STACK, SP - 4, 4 );
+	STORE(FP, STACK, SP - 4, 4);
 	FP = SP;
 	SP = SP - 4;
 	// retrieve formal parameters
@@ -108,14 +108,14 @@ void subcc_interpreter::printNewLine()
 
 	// --------------------------------------------------------------------
 	// native function call.
-	printf( "\n" );
+	printf("\n");
 	// --------------------------------------------------------------------
 
 	// --------------------------------------------------------------------
 	// epilog begin
 	SP = FP;
-	LOAD( FP, STACK, FP - 4, 4 );
+	LOAD(FP, STACK, FP - 4, 4);
 	RETURN;
-	// epilog end 
+	// epilog end
 	// --------------------------------------------------------------------
 }

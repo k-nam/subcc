@@ -1,10 +1,10 @@
 #ifndef LIB_CALVIN__SUBC_INTERPRETER__TEST_H
 #define LIB_CALVIN__SUBC_INTERPRETER__TEST_H
 
-namespace subcc_interpreter
+namespace subcc
 {
-	void subccInterpreterTest();
-	void test();
-}
+void interpreterTest();
+void test();
+} // namespace subcc
 
 #endif

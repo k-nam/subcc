@@ -43,4 +43,11 @@ target_link_libraries (SubccMain SubccTest SubccCompiler SubccCodeGenerator Subc
   SubccLexer SubccSymbolTable SubccSyntaxTree SubccThreeAddress SubccType SubccUtility
   ParserGenerator)
 
+add_executable (InterpreterMain interpreter/main)
+add_library (InterpreterTest interpreter/interpreter_test)
+add_library (Interpreter interpreter/interpreter)
+add_library (InterpreterAssembly interpreter/assembly)
+target_link_libraries (InterpreterMain InterpreterTest Interpreter InterpreterAssembly)
+
+
 add_definitions(-Wfatal-errors)
