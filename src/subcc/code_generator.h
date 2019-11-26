@@ -1,5 +1,4 @@
-#ifndef LIB_CALVIN__SUBCC__C_CODE_GENERATOR_H
-#define LIB_CALVIN__SUBCC__C_CODE_GENERATOR_H
+#pragma once
 
 /* 2008-06-08 */
 
@@ -35,4 +34,3 @@ private:
 
 }
 
-#endif

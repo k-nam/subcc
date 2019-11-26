@@ -1,5 +1,4 @@
-#ifndef SUBCC__LEXER_GENERATOR_H
-#define SUBCC__LEXER_GENERATOR_H
+#pragma once
 
 /* 2008-04-01
 * Implement a model for finite state machine, motivated by their use in
@@ -864,4 +863,3 @@ NOTOF(basic_string<Alphabet> const &instring)
 }
 
 } // namespace subcc
-#endif

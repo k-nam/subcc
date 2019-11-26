@@ -1,5 +1,4 @@
-#ifndef LIB_CALVIN__SUBC_INTERPRETER__H
-#define LIB_CALVIN__SUBC_INTERPRETER__H
+#pragma once
 
 #include <stdlib.h>
 #include <string.h>
@@ -66,4 +65,3 @@ extern int FP;
 	memcpy( (((char*) &(base)) + (offset)), (char*) &(src), size )
 	*/
 } // namespace subcc
-#endif

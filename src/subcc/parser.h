@@ -1,5 +1,4 @@
-#ifndef LIB_CALVIN__SUBCC__SUBCC_PARSER_H
-#define LIB_CALVIN__SUBCC__SUBCC_PARSER_H
+#pragma once
 
 #include "parser_generator.h"
 #include "lexer.h"
@@ -86,4 +85,3 @@ private:
 
 } // namespace subcc
 
-#endif

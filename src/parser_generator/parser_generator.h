@@ -1,5 +1,4 @@
-#ifndef SUBCC__PARSER_GENERATOR_H
-#define SUBCC__PARSER_GENERATOR_H
+#pragma once
 
 /* 2008-04-19: Changed ContextFreeLanguage to non-template class.
 * ..It does not need to be generic to character set, because it will only
@@ -280,4 +279,3 @@ protected:
 
 } // end namespace subcc
 
-#endif

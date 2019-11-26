@@ -1,6 +1,4 @@
-/* type.h */
-#ifndef LIB_CALVIN__SUBCC__TYPE_H
-#define LIB_CALVIN__SUBCC__TYPE_H
+#pragma once
 
 #include <deque>
 #include <iostream>
@@ -195,4 +193,3 @@ bool isCompatible(ProductType const &, ProductType const &);
 
 } // namespace subcc
 
-#endif

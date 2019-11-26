@@ -1,5 +1,4 @@
-#ifndef SUBCC__PARSER_GENERATOR_TEST_H
-#define SUBCC__PARSER_GENERATOR_TEST_H
+#pragma once
 
 #include "parser_generator.h"
 #include "fcntl.h" // for open, read
@@ -48,5 +47,3 @@ namespace subcc
 {
 void parserTest();
 }
-
-#endif

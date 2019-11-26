@@ -1,5 +1,4 @@
-#ifndef LIB_CALVIN__SUBCC__SYMBOL_TABLE_H
-#define LIB_CALVIN__SUBCC__SYMBOL_TABLE_H
+#pragma once
 
 #include <string>
 #include "lexer_generator.h" // to use my own string implementation
@@ -201,4 +200,3 @@ private:
 };
 } // namespace subcc
 
-#endif

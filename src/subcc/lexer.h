@@ -1,5 +1,4 @@
-#ifndef LIB_CALVIN__SUBCC__SUBCC_LEXER_H
-#define LIB_CALVIN__SUBCC__SUBCC_LEXER_H
+#pragma once
 
 #include "lexer_generator.h"
 #include <string>
@@ -119,4 +118,3 @@ enum Tokens
 
 } // namespace subcc
 
-#endif

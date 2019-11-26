@@ -1,7 +1,6 @@
 /* 2008-06-08
  */
-#ifndef LIB_CALVIN__SUBCC__THREE_ADDRESS_H
-#define LIB_CALVIN__SUBCC__THREE_ADDRESS_H
+#pragma once
 
 #include "parser.h"
 
@@ -358,6 +357,5 @@ private:
 
 
 
-#endif
 
 

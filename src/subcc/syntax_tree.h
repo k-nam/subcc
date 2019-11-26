@@ -1,5 +1,4 @@
-#ifndef LIB_CALVIN__SUBCC__SYNTAX_TREE_H
-#define LIB_CALVIN__SUBCC__SYNTAX_TREE_H
+#pragma once
 
 #include "lexer_generator.h" // for string
 #include "type.h"
@@ -216,4 +215,3 @@ protected:
 
 
 
-#endif
