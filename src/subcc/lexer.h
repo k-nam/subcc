@@ -16,7 +16,6 @@ public:
 	typedef NfaLexerGenerator<>::Token Token;
 	Lexer(string const &inText) : text_(inText), index_(0), lineNum_(1)
 	{
-		std::cout << text_;
 		build();
 		std::cout << "Lexer generating took " << "sec\n";
 	}

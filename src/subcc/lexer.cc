@@ -180,7 +180,6 @@ int Lexer::getNextToken()
         {
             // Store currently matched lexeme
             curLexeme_ = text_.substr(index_ - myToken.length, myToken.length);
-            cout << ">>>> curLexeme: " << curLexeme_ << "\n";
             return myToken.key;
         }
     }
