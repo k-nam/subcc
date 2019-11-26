@@ -125,8 +125,4 @@ int intOfHex(string const &string)
 	return value;
 }
 
-float floatOf(string const &string)
-{
-	return static_cast<float>(1.1);
-}
 } // namespace subcc
