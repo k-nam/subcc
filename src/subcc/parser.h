@@ -46,7 +46,8 @@ public:
 private:
 	// Forbid copy ctor and assignment
 	Parser(Parser const &);
-	Parser & operator=(Parser const &);
+	Parser &operator=(Parser const &);
+
 private:
 	void parse();
 	// Do appropriate operation with stack and symbol table to complete
@@ -88,4 +89,3 @@ private:
 };
 
 } // namespace subcc
-

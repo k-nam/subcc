@@ -278,4 +278,3 @@ protected:
 };
 
 } // end namespace subcc
-

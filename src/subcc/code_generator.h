@@ -4,38 +4,49 @@
 
 #include "three_address.h"
 
-namespace subcc {
+namespace subcc
+{
 
 // SymbolTable + ThreeAddr---> Target code
-class CCodeGenerator {
+class CCodeGenerator
+{
 public:
-  CCodeGenerator(shared_ptr<ThreeAdressCode const> threeAddrCode):
-    threeAddrCode_(threeAddrCode),
-		symbolTable_(threeAddrCode->getSymbolTable()) { }
+	CCodeGenerator(shared_ptr<ThreeAdressCode const> threeAddrCode) : threeAddrCode_(threeAddrCode),
+																	  symbolTable_(threeAddrCode->getSymbolTable()) {}
 
-  // For compiler homework...
-  void printCCode() const; 
+	// For compiler homework...
+	void printCCode() const;
 
 private:
 	// Forbid copy ctor and assignment
 	CCodeGenerator(CCodeGenerator const &);
-	CCodeGenerator & operator=(CCodeGenerator const &);
+	CCodeGenerator &operator=(CCodeGenerator const &);
 
 private:
-  enum Registers { GPR0, GPR1, GPR2, M0, ZERO };
-  enum MemOp { LOAD, STORE };
-  
-  void printCCode(Instruction const &) const;
-  void printCCode(enum MemOp op, enum Registers base, 
-      Address const &, int size = 4) const;
-  void printCCode(enum MemOp op, enum Registers base, 
-      Address const &, enum Registers index, int size = 4) const;
-  void printCCode(enum Registers reg) const;
-  void printCCode(enum MemOp op) const;
-  
-  shared_ptr<ThreeAdressCode const> threeAddrCode_;
-  shared_ptr<GlobalSymbolTable const> symbolTable_;
+	enum Registers
+	{
+		GPR0,
+		GPR1,
+		GPR2,
+		M0,
+		ZERO
+	};
+	enum MemOp
+	{
+		LOAD,
+		STORE
+	};
+
+	void printCCode(Instruction const &) const;
+	void printCCode(enum MemOp op, enum Registers base,
+					Address const &, int size = 4) const;
+	void printCCode(enum MemOp op, enum Registers base,
+					Address const &, enum Registers index, int size = 4) const;
+	void printCCode(enum Registers reg) const;
+	void printCCode(enum MemOp op) const;
+
+	shared_ptr<ThreeAdressCode const> threeAddrCode_;
+	shared_ptr<GlobalSymbolTable const> symbolTable_;
 };
 
-}
-
+} // namespace subcc

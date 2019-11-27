@@ -598,7 +598,7 @@ void ThreeAdressCodeGenerator::translateStatement(StmtNode const *node, int next
 		StmtNode *stmtNode = dynamic_cast<StmtNode *>(node->getChild(1));
 		StmtNode *elseStmtNode = dynamic_cast<StmtNode *>(node->getChild(2));
 		if (elseStmtNode->getProductionKey() == 142)
-		{   // else is empty
+		{ // else is empty
 			// Condition (true -> L1, false -> End)
 			// L1
 			// Stmt
