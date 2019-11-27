@@ -1,5 +1,4 @@
-#ifndef LIB_CALVIN__SUBCC__SUBCC_PARSER_H
-#define LIB_CALVIN__SUBCC__SUBCC_PARSER_H
+#pragma once
 
 #include "parser_generator.h"
 #include "lexer.h"
@@ -45,6 +44,11 @@ public:
 	shared_ptr<SyntaxTree const> getSyntaxTree() { return syntaxTree_; }
 
 private:
+	// Forbid copy ctor and assignment
+	Parser(Parser const &);
+	Parser &operator=(Parser const &);
+
+private:
 	void parse();
 	// Do appropriate operation with stack and symbol table to complete
 	// ..syntax tree
@@ -85,5 +89,3 @@ private:
 };
 
 } // namespace subcc
-
-#endif

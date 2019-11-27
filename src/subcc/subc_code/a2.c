@@ -1,14 +1,17 @@
-struct A {
+struct A
+{
 	int a;
 	int b;
 };
 
-int myFunc(int a) {
+int myFunc(int a)
+{
 	return a;
 }
 
-int main() {
-	
+int main()
+{
+
 	struct A aa[3][2];
 	aa[0][0].a = 11;
 	aa[0][1].b = 22;
@@ -19,4 +22,3 @@ int main() {
 	printInt(aa[0][0].a + aa[1][1].b + aa[2][1].b);
 	return 0;
 }
-

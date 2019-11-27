@@ -1,5 +1,4 @@
-#ifndef LIB_CALVIN__SUBCC__SUBCC_LEXER_H
-#define LIB_CALVIN__SUBCC__SUBCC_LEXER_H
+#pragma once
 
 #include "lexer_generator.h"
 #include <string>
@@ -17,9 +16,9 @@ public:
 	typedef NfaLexerGenerator<>::Token Token;
 	Lexer(string const &inText) : text_(inText), index_(0), lineNum_(1)
 	{
-		std::cout << text_;
 		build();
-		std::cout << "Lexer generating took " << "sec\n";
+		std::cout << "Lexer generating took "
+				  << "sec\n";
 	}
 	void initialize()
 	{ // start from the beginning of text again
@@ -37,12 +36,17 @@ public:
 	}
 
 private:
+	// Forbid copy ctor and assignment
+	Lexer(Lexer const &);
+	Lexer &operator=(Lexer const &);
+
+private:
 	void build();
 	NFA nfa;
 	DFA dfa;
 	string const &text_; // input source code to lex
-	int index_;			   // current position of reading
-	int lineNum_;		   // count current line number from start
+	int index_;			 // current position of reading
+	int lineNum_;		 // count current line number from start
 	string curLexeme_;   // store currently matched string
 };
 
@@ -118,5 +122,3 @@ enum Tokens
 };
 
 } // namespace subcc
-
-#endif

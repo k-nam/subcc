@@ -336,7 +336,7 @@ bool isVoidType(shared_ptr<Type const> type)
 }
 // Tests whether valid function call arguments (compared to declared type)
 bool isCompatible(ProductType const &lhs,
-						 ProductType const &rhs)
+				  ProductType const &rhs)
 {
 	if (lhs.getNum() != rhs.getNum())
 		return false;

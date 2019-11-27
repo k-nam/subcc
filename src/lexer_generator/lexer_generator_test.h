@@ -1,5 +1,4 @@
-#ifndef SUBCC__LEXER_GENERATOR_TEST_H
-#define SUBCC__LEXER_GENERATOR_TEST_H
+#pragma once
 
 #include "lexer_generator.h"
 #include "fcntl.h" // for open, read
@@ -11,5 +10,3 @@ void lexerTest();
 void lexerTest(std::string const &inputText);
 void printToken(NfaLexerGenerator<>::Token const &);
 } // namespace subcc
-
-#endif
