@@ -7,10 +7,11 @@
 #include "type.h"
 #include "syntax_tree.h"
 
-void subcc::subccTest() {
+void subcc::subccTest()
+{
 	using namespace subcc;
-	using std::string;
 	using std::cout;
+	using std::string;
 	std::cout << "---------------- Beginning subcc test -----------------\n\n";
 	// Adding "../subcc/" to make this path compatible with other projects
 	//std::string inputFileName = "../subcc/subc_code/a1.c";
@@ -20,7 +21,8 @@ void subcc::subccTest() {
 	string sourceText;
 
 	std::ifstream stream(inputFileName);
-	if (!stream) {
+	if (!stream)
+	{
 		cout << "subccTest error: cannot open input file\n";
 		exit(0);
 	}

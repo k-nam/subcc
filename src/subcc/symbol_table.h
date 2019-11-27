@@ -139,6 +139,11 @@ public:
 	static void countObjects();
 
 private:
+	// Forbid copy ctor and assignment
+	SymbolTable(SymbolTable const &);
+	SymbolTable &operator=(SymbolTable const &);
+
+private:
 	// Integer value is the index to the global table
 	map<string, int> mapping_;
 	GlobalSymbolTable const &globalTable_;
@@ -189,6 +194,11 @@ public:
 	static void countObjects();
 
 private:
+	// Forbid copy ctor and assignment
+	GlobalSymbolTable(GlobalSymbolTable const &);
+	GlobalSymbolTable &operator=(GlobalSymbolTable const &);
+
+private:
 	int setEntry(shared_ptr<Symbol const>); // make new entry and return its index
 	SymbolTable *root_;						// Global symbol table
 	SymbolTable *curTable_;					// currently operating table
@@ -199,4 +209,3 @@ private:
 	static int objectCount_;
 };
 } // namespace subcc
-

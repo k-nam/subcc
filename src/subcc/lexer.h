@@ -35,6 +35,11 @@ public:
 	}
 
 private:
+	// Forbid copy ctor and assignment
+	Lexer(Lexer const &);
+	Lexer & operator=(Lexer const &);
+
+private:
 	void build();
 	NFA nfa;
 	DFA dfa;

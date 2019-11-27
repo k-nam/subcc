@@ -15,7 +15,12 @@ public:
 
   // For compiler homework...
   void printCCode() const; 
-  
+
+private:
+	// Forbid copy ctor and assignment
+	CCodeGenerator(CCodeGenerator const &);
+	CCodeGenerator & operator=(CCodeGenerator const &);
+
 private:
   enum Registers { GPR0, GPR1, GPR2, M0, ZERO };
   enum MemOp { LOAD, STORE };
