@@ -15,9 +15,7 @@ void subcc::subccTest()
 	std::cout << "---------------- Beginning subcc test -----------------\n\n";
 
 	vector<string> testFiles = {"a1", "a2", "test"};
-	//std::string inputFileName = "../subcc/subc_code/a1.c";
-	//std::string inputFileName = "../subcc/subc_code/a2.c";
-	std::string inputFileName = "../subcc/subc_code/test.c";
+	std::string inputFileName;
 
 	for (auto testFile : testFiles)
 	{

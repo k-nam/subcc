@@ -12,7 +12,7 @@ int fibo(int n)
 
 struct my
 {
-	int array[5];
+	int array[6];
 };
 typedef struct my DataType;
 
@@ -141,7 +141,7 @@ int main()
 	printNewLine();
 	printNewLine();
 
-	endMessage = "5. Finished all test.";
+	endMessage = "5. Finished all test. *^^*";
 	printStr(endMessage);
 	printNewLine();
 

@@ -93,7 +93,7 @@ NonTerminalNode::~NonTerminalNode()
 	// Catch "x += y" type expressions
 	if (productionKey_ == 191 && getNumChildren() == 2 &&
 				getChild(1)->isNonTerminal() == true) { // "x = NonTerminal" type
-		NonTerminalNode const *rhsExprNode = 
+		NonTerminalNode const *rhsExprNode =
 			dynamic_cast<NonTerminalNode const *>(getChild(1));
 		if (rhsExprNode->getProductionKey() >= 281 &&
 				rhsExprNode->getProductionKey() <= 288 && // "x = a binOp b" type
