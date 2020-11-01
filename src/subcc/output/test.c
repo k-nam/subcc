@@ -448,60 +448,67 @@ void loopTest() {
 	STORE ( FP, STACK, SP - 4, 4);
 	SP = SP - 4;
 	FP = SP;
-	SP = SP - 104;
+	SP = SP - 112;
+	LOAD( GPR0 , STACK , FP + (-92) + ZERO , 4 );
+	LOAD( GPR1 , STACK , FP + (-84) + ZERO , 4 );
+	 GPR2  =  GPR0 + GPR1 ;
+	STORE( GPR2 , STACK , FP + (-96) + ZERO , 4 );
+	LOAD( M0 , STACK , FP + (-96) + ZERO , 4 );
+	STORE( M0 , STACK , FP + (-92) + ZERO , 4 );
+L53:
 	*((int *)M0) = 0;
 	STORE( M0 , STACK , FP + (-84) + ZERO , 4 );
-L53:
+L54:
 	LOAD( M0 , STRING_SEGMENT , 29 +  ZERO , 2 );
 	STORE( M0 , STACK , FP + (-80) + ZERO , 2 );
-L54:
 L55:
+L56:
 	LOAD( GPR0 , STACK , FP + (-84) + ZERO , 4 );
 	LOAD( GPR1 , STACK , FP + (4) + ZERO , 4 );
 	 GPR2  =  GPR0 < GPR1 ;
-	STORE( GPR2 , STACK , FP + (-92) + ZERO , 4 );
-	LOAD( GPR0 , STACK , FP + (-92) + ZERO , 4 );
-	IF ( GPR0 , L56 );
+	STORE( GPR2 , STACK , FP + (-100) + ZERO , 4 );
+	LOAD( GPR0 , STACK , FP + (-100) + ZERO , 4 );
+	IF ( GPR0 , L57 );
 	GOTO (L52);
-L56:
+L57:
 	*((int *)M0) = 0;
 	STORE( M0 , STACK , FP + (-88) + ZERO , 4 );
-L58:
-L60:
+L59:
+L61:
 	LOAD( GPR0 , STACK , FP + (-88) + ZERO , 4 );
 	LOAD( GPR1 , STACK , FP + (-84) + ZERO , 4 );
 	 GPR2  =  GPR0 < GPR1 ;
-	STORE( GPR2 , STACK , FP + (-96) + ZERO , 4 );
-	LOAD( GPR0 , STACK , FP + (-96) + ZERO , 4 );
-	IF ( GPR0 , L61 );
-	GOTO (L59);
-L61:
+	STORE( GPR2 , STACK , FP + (-104) + ZERO , 4 );
+	LOAD( GPR0 , STACK , FP + (-104) + ZERO , 4 );
+	IF ( GPR0 , L62 );
+	GOTO (L60);
+L62:
 	LOAD( M0 , STACK , FP + (-80) + ZERO , 80 );
 	STORE ( M0, STACK, SP - 80 ,80 );
 	SP = SP - 80;
 	CALL( printStr);
 	SP = SP + 80 ;
-L63:
+L64:
 	LOAD( GPR0 , STACK , FP + (-88) + ZERO , 4 );
 	 GPR1  = 1;
 	 GPR2  =  GPR0 + GPR1 ;
-	STORE( GPR2 , STACK , FP + (-104) + ZERO , 4 );
-	LOAD( M0 , STACK , FP + (-104) + ZERO , 4 );
+	STORE( GPR2 , STACK , FP + (-112) + ZERO , 4 );
+	LOAD( M0 , STACK , FP + (-112) + ZERO , 4 );
 	STORE( M0 , STACK , FP + (-88) + ZERO , 4 );
-L62:
-	GOTO (L60);
-L59:
+L63:
+	GOTO (L61);
+L60:
 	CALL( printNewLine);
 	SP = SP + 0 ;
-L64:
+L65:
 	LOAD( GPR0 , STACK , FP + (-84) + ZERO , 4 );
 	 GPR1  = 1;
 	 GPR2  =  GPR0 + GPR1 ;
-	STORE( GPR2 , STACK , FP + (-104) + ZERO , 4 );
-	LOAD( M0 , STACK , FP + (-104) + ZERO , 4 );
+	STORE( GPR2 , STACK , FP + (-112) + ZERO , 4 );
+	LOAD( M0 , STACK , FP + (-112) + ZERO , 4 );
 	STORE( M0 , STACK , FP + (-84) + ZERO , 4 );
-L57:
-	GOTO (L55);
+L58:
+	GOTO (L56);
 L52:
 	SP = FP;
 	LOAD ( FP, STACK, SP, 4);
@@ -517,28 +524,28 @@ void _main() {
 	SP = SP - 476;
 	LOAD( M0 , STRING_SEGMENT , 31 +  ZERO , 34 );
 	STORE( M0 , STACK , FP + (-80) + ZERO , 34 );
-L66:
+L67:
 	LOAD( M0 , STACK , FP + (-80) + ZERO , 80 );
 	STORE ( M0, STACK, SP - 80 ,80 );
 	SP = SP - 80;
 	CALL( printStr);
 	SP = SP + 80 ;
-L67:
-	CALL( printNewLine);
-	SP = SP + 0 ;
 L68:
 	CALL( printNewLine);
 	SP = SP + 0 ;
 L69:
+	CALL( printNewLine);
+	SP = SP + 0 ;
+L70:
 	LOAD( M0 , STRING_SEGMENT , 65 +  ZERO , 35 );
 	STORE( M0 , STACK , FP + (-160) + ZERO , 35 );
-L70:
+L71:
 	LOAD( M0 , STACK , FP + (-160) + ZERO , 80 );
 	STORE ( M0, STACK, SP - 80 ,80 );
 	SP = SP - 80;
 	CALL( printStr);
 	SP = SP + 80 ;
-L71:
+L72:
 	*((int *)M0) = 10;
 	STORE ( M0, STACK, SP - 4 ,4 );
 	SP = SP - 4;
@@ -550,73 +557,73 @@ L71:
 	SP = SP - 4;
 	CALL( printInt);
 	SP = SP + 4 ;
-L72:
-	CALL( printNewLine);
-	SP = SP + 0 ;
 L73:
 	CALL( printNewLine);
 	SP = SP + 0 ;
 L74:
+	CALL( printNewLine);
+	SP = SP + 0 ;
+L75:
 	LOAD( M0 , STRING_SEGMENT , 100 +  ZERO , 30 );
 	STORE( M0 , STACK , FP + (-240) + ZERO , 30 );
-L75:
+L76:
 	LOAD( M0 , STACK , FP + (-240) + ZERO , 80 );
 	STORE ( M0, STACK, SP - 80 ,80 );
 	SP = SP - 80;
 	CALL( printStr);
 	SP = SP + 80 ;
-L76:
-	CALL( printNewLine);
-	SP = SP + 0 ;
 L77:
-	CALL( sortTest);
+	CALL( printNewLine);
 	SP = SP + 0 ;
 L78:
-	CALL( printNewLine);
+	CALL( sortTest);
 	SP = SP + 0 ;
 L79:
 	CALL( printNewLine);
 	SP = SP + 0 ;
 L80:
+	CALL( printNewLine);
+	SP = SP + 0 ;
+L81:
 	LOAD( M0 , STRING_SEGMENT , 130 +  ZERO , 27 );
 	STORE( M0 , STACK , FP + (-320) + ZERO , 27 );
-L81:
+L82:
 	LOAD( M0 , STACK , FP + (-320) + ZERO , 80 );
 	STORE ( M0, STACK, SP - 80 ,80 );
 	SP = SP - 80;
 	CALL( printStr);
 	SP = SP + 80 ;
-L82:
+L83:
 	*((int *)M0) = 20;
 	STORE ( M0, STACK, SP - 4 ,4 );
 	SP = SP - 4;
 	CALL( loopTest);
 	SP = SP + 4 ;
-L83:
-	CALL( printNewLine);
-	SP = SP + 0 ;
 L84:
 	CALL( printNewLine);
 	SP = SP + 0 ;
 L85:
+	CALL( printNewLine);
+	SP = SP + 0 ;
+L86:
 	LOAD( M0 , STRING_SEGMENT , 157 +  ZERO , 26 );
 	STORE( M0 , STACK , FP + (-400) + ZERO , 26 );
-L86:
+L87:
 	LOAD( M0 , STACK , FP + (-400) + ZERO , 80 );
 	STORE ( M0, STACK, SP - 80 ,80 );
 	SP = SP - 80;
 	CALL( printStr);
 	SP = SP + 80 ;
-L87:
+L88:
 	CALL( printNewLine);
 	SP = SP + 0 ;
-L88:
+L89:
 	*((int *)M0) = 0;
 	SP = FP;
 	LOAD ( FP, STACK, SP, 4);
 	SP = SP + 4;
 	RETURN;
-L65:
+L66:
 	SP = FP;
 	LOAD ( FP, STACK, SP, 4);
 	SP = SP + 4;

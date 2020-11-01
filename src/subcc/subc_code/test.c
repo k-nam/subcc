@@ -94,6 +94,8 @@ void loopTest(int size)
 	char star[80];
 	int i;
 	int j;
+  int k;
+  k += i;
 	i = 0;
 	star = "<>";
 	while (i < size)
